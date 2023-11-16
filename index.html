@@ -9,12 +9,25 @@
         button{
             font-size: xx-large;
         }
+        p{
+            font-size: xx-large;
+        }
     </style>
 </head>
-<body>
-    <button>🪨</button>
-    <button>🧻</button>
-    <button>✂️</button>
-
+<body onload="initialize()">
+    <button id="rockButton">🪨</button>
+    <button id="paperButton">🧻</button>
+    <button id="scissorButton">✂️</button>
+    <div>
+        <h1>Player</h1>
+        <p id="playerScore">0</p>
+    </div>
+    <div>
+        <h1>🤖</h1>
+        <p id="computerScore">0</p>
+    </div>
+    <div id="finalScore">
+        gg
+    </div>
 </body>
 </html>

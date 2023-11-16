@@ -12,13 +12,63 @@ function getComputerChoice(){
     return strSelect
 }
 
-function game(){
+function game(playerChoice){
     const computerChoice = getComputerChoice()
     console.log(computerChoice)
-    const playerChoice = prompt("Rock, Paper or Scissors?").toLowerCase()
     console.log(playerChoice)
     if (computerChoice === playerChoice){
-        return ("You tied!")
+        console.log("Tied!");
+        return (0);
+    }else if (playerChoice === "rock" && computerChoice === "paper"){
+        console.log("lost");
+        return(-1);
+    }else if (playerChoice === "rock" && computerChoice === "scissors"){
+        console.log("won");
+        return(1);
     }
 }
-game()
+function updateScore(result, computerDispScore, playerDispScore){
+    console.log("inside");
+    const computerScore = document.getElementById("computerScore");
+    const playerScore = document.getElementById("playerScore");
+    const finalScore = document.getElementById("finalScore");
+    
+    computerScore.innerHTML = computerDispScore;
+    playerScore.innerHTML = playerDispScore;
+    finalScore.style.backgroundColor = 'blue';
+}
+
+function initialize(){
+    let result = 0;
+    let computerDispScore = 0;
+    let playerDispScore = 0;
+    const rockButton = document.getElementById("rockButton");
+    rockButton.addEventListener("click", function() {
+    console.log("The button was clicked!");
+    const playerChoice = "rock";
+    result = game(playerChoice);
+    if (result > 0){
+        playerDispScore++;
+    } else if (result < 0){
+        computerDispScore++;
+    }
+    console.log(computerDispScore);
+    updateScore(result, computerDispScore, playerDispScore);
+    })
+
+    const paperButton = document.getElementById("paperButton");
+    paperButton.addEventListener("click", function() {
+        console.log("The button was clicked!");
+        const playerChoice = "paper";
+        result = game(playerChoice);
+        if (result > 0){
+            playerDispScore++;
+        } else if (result < 0){
+            computerDispScore++;
+        }
+        console.log(computerDispScore);
+        updateScore(result, computerDispScore, playerDispScore);
+    })
+    
+}
+
